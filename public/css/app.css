@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+/* ─── CSS Variables ─────────────────────────────────────────────── */
+:root {
+  --green-dark:      #0a3d1f;
+  --green-mid:       #145a32;
+  --green-light:     #1e8449;
+  --green-glow:      rgba(30, 132, 73, 0.25);
+  --accent:          #52e07c;
+  --accent-soft:     rgba(82, 224, 124, 0.15);
+  --text-primary:    #f0faf3;
+  --text-muted:      rgba(240, 250, 243, 0.60);
+  --border-subtle:   rgba(82, 224, 124, 0.18);
+  --nav-height:      68px;
+  --radius-pill:     50px;
+  --font-body:       'Plus Jakarta Sans', sans-serif;
+  --font-display:    'Playfair Display', serif;
+  --transition:      0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Navbar Base ───────────────────────────────────────────────── */
+.isu-navbar {
+  height: var(--nav-height);
+  background:
+    linear-gradient(135deg,
+      rgba(10, 61, 31, 0.92)  0%,
+      rgba(20, 90, 50, 0.88) 45%,
+      rgba(10, 61, 31, 0.94) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2352e07c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    0 1px 0px var(--border-subtle),
+    inset 0 1px 0 rgba(82, 224, 124, 0.08);
+  font-family: var(--font-body);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+/* ─── Logo ──────────────────────────────────────────────────────── */
+.isu-navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 0;
+}
+
+.isu-logo-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--accent) 0%, #28a745 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px var(--green-glow), 0 2px 8px rgba(0,0,0,0.3);
+  flex-shrink: 0;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.isu-logo-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--green-dark);
+}
+
+.isu-navbar .navbar-brand:hover .isu-logo-icon {
+  transform: rotate(-6deg) scale(1.08);
+  box-shadow: 0 0 22px var(--accent), 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.isu-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.isu-logo-text .logo-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.isu-logo-text .logo-subtitle {
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── Nav Links ─────────────────────────────────────────────────── */
+.isu-navbar .navbar-nav {
+  gap: 2px;
+}
+
+.isu-navbar .nav-link {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--text-muted) !important;
+  padding: 6px 13px !important;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+  transition:
+    color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.isu-navbar .nav-link i {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.isu-navbar .nav-link:hover {
+  color: var(--text-primary) !important;
+  background: var(--accent-soft);
+}
+
+.isu-navbar .nav-link:hover i {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.isu-navbar .nav-link.active {
+  color: var(--accent) !important;
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
+}
+
+.isu-navbar .nav-link.active i {
+  opacity: 1;
+}
+
+/* ─── Dropdown ──────────────────────────────────────────────────── */
+.isu-navbar .dropdown-menu {
+  background: linear-gradient(160deg, #0d4a25 0%, #0a3d1f 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(82,224,124,0.06);
+  padding: 6px;
+  min-width: 200px;
+  margin-top: 8px !important;
+  animation: dropIn 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.isu-navbar .dropdown-item {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background var(--transition), color var(--transition);
+}
+
+.isu-navbar .dropdown-item i {
+  width: 16px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.isu-navbar .dropdown-item:hover {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.isu-navbar .dropdown-item:hover i {
+  opacity: 1;
+}
+
+.isu-navbar .dropdown-divider {
+  border-color: var(--border-subtle);
+  margin: 4px 6px;
+}
+
+/* ─── Notification Bell ─────────────────────────────────────────── */
+.isu-nav-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--accent-soft);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  text-decoration: none;
+}
+
+.isu-nav-icon-btn:hover {
+  color: var(--accent);
+  background: rgba(82, 224, 124, 0.22);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--green-glow);
+}
+
+.isu-nav-icon-btn .badge-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 1.5px solid var(--green-dark);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+/* ─── Avatar / User ─────────────────────────────────────────────── */
+.isu-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-soft);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px 4px 5px;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.isu-user-btn:hover {
+  background: rgba(82, 224, 124, 0.22);
+  border-color: var(--accent);
+  box-shadow: 0 0 14px var(--green-glow);
+}
+
+.isu-user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #28a745);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+.isu-user-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.isu-user-role {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ─── Toggler ───────────────────────────────────────────────────── */
+.isu-navbar .navbar-toggler {
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 6px 9px;
+  color: var(--text-primary);
+  background: var(--accent-soft);
+}
+
+.isu-navbar .navbar-toggler:focus { box-shadow: none; }
+
+.isu-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2882, 224, 124, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ─── Mobile collapse ───────────────────────────────────────────── */
+@media (max-width: 991.98px) {
+  .isu-navbar {
+    height: auto;
+    min-height: var(--nav-height);
+  }
+
+  .isu-navbar .navbar-collapse {
+    background: linear-gradient(180deg, rgba(10, 61, 31, 0.98) 0%, rgba(7, 45, 22, 0.99) 100%);
+    border-top: 1px solid var(--border-subtle);
+    border-radius: 0 0 16px 16px;
+    padding: 12px 16px 16px;
+    margin: 0 -12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  }
+
+  .isu-navbar .navbar-nav { gap: 2px; }
+
+  .isu-navbar .nav-link {
+    border-radius: 10px;
+    padding: 9px 14px !important;
+  }
+
+  .isu-nav-extras {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 12px;
+    margin-top: 8px;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

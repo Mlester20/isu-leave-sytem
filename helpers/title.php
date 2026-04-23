@@ -1,3 +1,3 @@
 <?php
-echo "Leave System";
+echo "ISU Leave System";
 ?>

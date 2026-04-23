@@ -9,7 +9,7 @@ require_once __DIR__ . '/helpers/message.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Sign In | Sign Up </title>
+    <title> Sign In | <?php require_once __DIR__ . '/helpers/title.php'; ?> </title>
     <link rel="stylesheet" href="public/assets/vendor/css/pages/page-auth.css" />
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <link rel="icon" type="image/x-icon" href="storage/images/isu-logo.png" />
