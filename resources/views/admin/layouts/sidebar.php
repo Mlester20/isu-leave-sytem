@@ -32,40 +32,12 @@
         <li class="menu-item">
           <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon icon-base ri ri-layout-left-line"></i>
-            <div data-i18n="Room Types">Room Types</div>
+            <div data-i18n="Departments">Departments</div>
           </a>
           <ul class="menu-sub">
             <li class="menu-item">
-              <a href="#" class="menu-link">
-                <div data-i18n="Categories">Room Types</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon icon-base ri ri-door-open-line"></i>
-            <div data-i18n="Rooms">Rooms</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <div data-i18n="Basic">Rooms</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon icon-base ri ri-book-line"></i>
-            <div data-i18n="Home Description">Home Description</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <div data-i18n="Error">Home Description</div>
+              <a href="departments.php" class="menu-link">
+                <div data-i18n="Categories">Manage Departments</div>
               </a>
             </li>
           </ul>
@@ -80,23 +52,7 @@
             <li class="menu-item"><a href="users.php" class="menu-link"><div>Users</div></a></li>
           </ul>
         </li>
-        <li class="menu-item">
-          <a href="javascript:void(0)" class="menu-link menu-toggle">
-            <i class="menu-icon icon-base ri ri-book-line"></i>
-            <div data-i18n="Extended UI">Reservations</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item"><a href="#" class="menu-link"><div>Room Reservations</div></a></li>
-            <li class="menu-item"><a href="#" class="menu-link"><div>Event Reservations</div></a></li>
-          </ul>
-        </li>
 
-        <li class="menu-item">
-          <a href="#" class="menu-link">
-            <i class="menu-icon icon-base ri ri-calendar-line"></i>
-            <div data-i18n="Icons">Events</div>
-          </a>
-        </li>
 
         <!-- Forms & Tables -->
         <li class="menu-header mt-7"><span class="menu-header-text">Reports</span></li>
@@ -107,28 +63,19 @@
             <div data-i18n="Form Elements">Activities Log</div>
           </a>
           <ul class="menu-sub">
-            <li class="menu-item"><a href="#" class="menu-link"><div>Activities Log</div></a></li>
+            <li class="menu-item"><a href="activities-log.php" class="menu-link"><div>Activities Log</div></a></li>
           </ul>
         </li>
 
         <li class="menu-item">
           <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon icon-base ri ri-box-3-line"></i>
-            <div data-i18n="Form Layouts">Form Layouts</div>
+            <div data-i18n="Form Layouts">Audits</div>
           </a>
           <ul class="menu-sub">
-            <li class="menu-item"><a href="#" class="menu-link"><div>Vertical Form</div></a></li>
-            <li class="menu-item"><a href="#" class="menu-link"><div>Horizontal Form</div></a></li>
+            <li class="menu-item"><a href="audits.php" class="menu-link"><div>Audits</div></a></li>
           </ul>
         </li>
-
-        <li class="menu-item">
-          <a href="#" class="menu-link">
-            <i class="menu-icon icon-base ri ri-table-alt-line"></i>
-            <div data-i18n="Tables">Tables</div>
-          </a>
-        </li>
-
       </ul>
     </aside>
     <!-- / Menu -->
