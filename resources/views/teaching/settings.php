@@ -18,32 +18,22 @@ $user = $updateProfileModel->getUserById($_SESSION['id']);
   data-assets-path="../../../public/assets/"
   data-template="vertical-menu-template-free">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-  <title><?php require_once __DIR__ . '/../../../helpers/title.php'; ?></title>
-  <link rel="icon" type="image/x-icon" href="../../../storage/images/isu-logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../../public/assets/vendor/fonts/iconify-icons.css" />
-  <link rel="stylesheet" href="../../../public/assets/vendor/libs/node-waves/node-waves.css" />
-  <link rel="stylesheet" href="../../../public/assets/vendor/css/core.css" />
-  <link rel="stylesheet" href="../../../public/assets/css/demo.css" />
-  <link rel="stylesheet" href="../../../public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-  <link rel="stylesheet" href="../../../public/assets/vendor/libs/apex-charts/apex-charts.css" />
-  <link rel="stylesheet" href="../../../public/css/admin-dashboard.css" />
-  <script src="../../../public/assets/vendor/js/helpers.js"></script>
-  <script src="../../../public/assets/js/config.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <?php require_once __DIR__ . '/../../../helpers/title.php'; ?> </title>
+    <link rel="shortcut icon" href="../../../storage/images/isu-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../../public/css/app.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
-  <?php require_once __DIR__ . '/layouts/sidebar.php'; ?>
-  <?php require_once __DIR__ . '/layouts/topbar.php'; ?>
+<?php include __DIR__ . '/../non_teaching/partials/navbar.php'; ?>
 
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
       <div class="col-12">
-        <h4 class="fw-bold py-3 mb-4">Account / Profile Settings</h4>
+        <h4 class="py-3 mb-4 text-center mt-4">Account / Profile Settings</h4>
       </div>
     </div>
 
@@ -163,7 +153,6 @@ $user = $updateProfileModel->getUserById($_SESSION['id']);
     </div>
   </div>
 
-  <?php require_once __DIR__ . '/layouts/footer.php'; ?>
 
   <!-- ── Vendor scripts ── -->
   <script src="../../../public/assets/vendor/libs/jquery/jquery.js"></script>
