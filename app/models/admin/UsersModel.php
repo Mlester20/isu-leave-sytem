@@ -6,7 +6,9 @@ require_once __DIR__ . '/../BaseModel.php';
 
         public function index(){
             try{
-                $query = "SELECT id, full_name, email, role, vacation_leave, sick_leave FROM {$this->users}";
+                $query = "SELECT u.id, u.full_name, u.email, u.role, u.department_id, u.vacation_leave, u.sick_leave, d.department_name 
+                          FROM {$this->users} u 
+                          LEFT JOIN departments d ON u.department_id = d.id";
                 $stmt = $this->con->prepare($query);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -23,7 +25,7 @@ require_once __DIR__ . '/../BaseModel.php';
 
         public function create($data){
             try{
-                $query = "INSERT INTO {$this->users} (employee_no, full_name, email, password, role, department, vacation_leave, sick_leave) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                $query = "INSERT INTO {$this->users} (employee_no, full_name, email, password, role, department_id, vacation_leave, sick_leave) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $this->con->prepare($query);
                 
                 if(!$stmt){
@@ -33,13 +35,13 @@ require_once __DIR__ . '/../BaseModel.php';
                 $hashedPassword = password_hash($data['password'], PASSWORD_BCRYPT);
                 
                 $stmt->bind_param(
-                    "ssssssii",
+                    "sssssiii",
                     $data['employee_no'],
                     $data['full_name'],
                     $data['email'],
                     $hashedPassword,
                     $data['role'],
-                    $data['department'],
+                    $data['department_id'],
                     $data['vacation_leave'],
                     $data['sick_leave']
                 );
@@ -56,7 +58,7 @@ require_once __DIR__ . '/../BaseModel.php';
 
         public function update($id, $data){
             try{
-                $query = "UPDATE {$this->users} SET full_name = ?, email = ?, role = ?, department = ?, vacation_leave = ?, sick_leave = ? WHERE id = ?";
+                $query = "UPDATE {$this->users} SET full_name = ?, email = ?, role = ?, department_id = ?, vacation_leave = ?, sick_leave = ? WHERE id = ?";
                 $stmt = $this->con->prepare($query);
                 
                 if(!$stmt){
@@ -64,11 +66,11 @@ require_once __DIR__ . '/../BaseModel.php';
                 }
 
                 $stmt->bind_param(
-                    "sssssii",
+                    "sssiii",
                     $data['full_name'],
                     $data['email'],
                     $data['role'],
-                    $data['department'],
+                    $data['department_id'],
                     $data['vacation_leave'],
                     $data['sick_leave'],
                     $id

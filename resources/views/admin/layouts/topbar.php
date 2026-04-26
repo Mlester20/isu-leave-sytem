@@ -63,13 +63,6 @@
                   </a>
                 </li>
                 <li><div class="dropdown-divider my-1"></div></li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    <i class="icon-base ri ri-user-line icon-md me-3"></i>
-                    <span>Activity Log</span>
-                  </a>
-                </li>
-                <li>
                   <a class="dropdown-item" href="settings.php">
                     <i class="icon-base ri ri-settings-4-line icon-md me-3"></i>
                     <span>Settings</span>

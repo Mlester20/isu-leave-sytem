@@ -1,15 +1,21 @@
 <?php
 session_start();
 require_once __DIR__ . '/../../models/admin/UsersModel.php';
+require_once __DIR__ . '/../../models/admin/DepartmentModel.php';
 require_once __DIR__ . '/../../../db/config.php';
 require_once __DIR__ . '/../Controller.php';
 require_once __DIR__ . '/../../../helpers/message.php';
+require_once __DIR__ . '/../../../helpers/activitiesLogger.php';
 
     class UsersController extends Controller {
         private $usersModel;
+        private $departmentModel;
+        private $activityLogger;
 
         public function __construct($con) {
             $this->usersModel = new UsersModel($con);
+            $this->departmentModel = new DepartmentModel($con);
+            $this->activityLogger = new ActivityLogger($con);
         }
 
         public function index() {
@@ -21,9 +27,19 @@ require_once __DIR__ . '/../../../helpers/message.php';
             }
         }
 
+        public function getDepartments() {
+            try {
+                return $this->departmentModel->index();
+            } catch (Exception $e) {
+                echo "Error fetching departments: " . $e->getMessage();
+                return [];
+            }
+        }
+
         public function create($data) {
             try{
                 $this->usersModel->create($data);
+                $this->activityLogger->log($_SESSION['id'], $_SESSION['role'], 'CREATE', 'USERS', null, null, "User created: " . $data['full_name'], 'success');
                 setFlash("success", "User created successfully.");
                 header("location: ../../../../resources/views/admin/users.php");
 
@@ -39,6 +55,7 @@ require_once __DIR__ . '/../../../helpers/message.php';
         public function update($id, $data) {
             try{
                 $this->usersModel->update($id, $data);
+                $this->activityLogger->log($_SESSION['id'], $_SESSION['role'], 'UPDATE', 'USERS', $id, null, "User updated: " . $data['full_name'], 'success');
                 setFlash("success", "User updated successfully.");
                 header("location: ../../../../resources/views/admin/users.php");
 
@@ -53,6 +70,7 @@ require_once __DIR__ . '/../../../helpers/message.php';
         public function delete($id) {
             try{
                 $this->usersModel->delete($id);
+                $this->activityLogger->log($_SESSION['id'], $_SESSION['role'], 'DELETE', 'USERS', $id, null, "User deleted: " . $id, 'success');
                 setFlash("success", "User deleted successfully.");
                 header("location: ../../../../resources/views/admin/users.php");
 
@@ -72,6 +90,9 @@ require_once __DIR__ . '/../../../helpers/message.php';
 
     //get all users
     $users = $usersController->index();
+    
+    //get all departments
+    $departments = $usersController->getDepartments();
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['create_user'])){
@@ -81,7 +102,7 @@ require_once __DIR__ . '/../../../helpers/message.php';
                 'email' => $_POST['email'],
                 'password' => $_POST['password'],
                 'role' => $_POST['role'],
-                'department' => $_POST['department'],
+                'department_id' => $_POST['department_id'],
                 'vacation_leave' => $_POST['vacation_leave'],
                 'sick_leave' => $_POST['sick_leave'],
             ]);
