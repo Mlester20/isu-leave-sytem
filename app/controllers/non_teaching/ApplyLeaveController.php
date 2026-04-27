@@ -44,7 +44,7 @@ class ApplyLeaveController {
         }
 
         // --- Deduct balance ---
-        $this->model->deductBalance($userId, $data['leave_type'], $data['days']);
+        // $this->model->deductBalance($userId, $data['leave_type'], $data['days']);
 
         // --- Update session balance ---
         $newBalance = $this->model->getBalance($userId);
