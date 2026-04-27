@@ -3,13 +3,20 @@ require_once __DIR__ . '/BaseModel.php';
 
 class UpdateProfileModel extends BaseModel {
     protected $table = 'users';
-
+    protected $department = 'departments';
     /**
      * Get user by ID
      */
     public function getUserById($id) {
-        try {
-            $sql = "SELECT * FROM {$this->table} WHERE id = ? LIMIT 1";
+        try{
+            $sql = "SELECT 
+                u.*, 
+                d.department_name as department
+                FROM {$this->table} u
+                LEFT JOIN {$this->department} d ON u.department_id = d.id
+                WHERE u.id = ? 
+                LIMIT 1
+                ";
             $stmt = $this->con->prepare($sql);
             $stmt->bind_param("i", $id);
             $stmt->execute();

@@ -89,6 +89,10 @@ allowOnly(['admin']);
                                 </select>
                             </div>
                             <div class="col-md-6">
+                                <label for="position" class="form-label">Position</label>
+                                <input type="text" class="form-control" id="position" name="position" required>
+                            </div>
+                            <div class="col-md-6">
                                 <label for="vacation_leave" class="form-label">Vacation Leave</label>
                                 <input type="number" class="form-control" id="vacation_leave" name="vacation_leave" required>
                             </div>
@@ -145,6 +149,10 @@ allowOnly(['admin']);
                                         <option value="<?= $dept['id'] ?>"><?= htmlspecialchars($dept['department_name']) ?></option>
                                     <?php endforeach; ?>
                                 </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="position" class="form-label">Position</label>
+                                <input type="text" class="form-control" id="update_position" name="position" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="update_vacation_leave" class="form-label">Vacation Leave</label>
@@ -211,6 +219,10 @@ allowOnly(['admin']);
                     <div class="mb-3">
                         <label class="form-label"><strong>Department</strong></label>
                         <p id="view_department"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Department</strong></label>
+                        <p id="view_position"></p>
                     </div>
                     <div class="mb-3">
                         <label class="form-label"><strong>Vacation Leave</strong></label>

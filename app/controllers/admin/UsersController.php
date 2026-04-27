@@ -103,6 +103,7 @@ require_once __DIR__ . '/../../../helpers/activitiesLogger.php';
                 'password' => $_POST['password'],
                 'role' => $_POST['role'],
                 'department_id' => $_POST['department_id'],
+                'position' => $_POST['position'],   
                 'vacation_leave' => $_POST['vacation_leave'],
                 'sick_leave' => $_POST['sick_leave'],
             ]);

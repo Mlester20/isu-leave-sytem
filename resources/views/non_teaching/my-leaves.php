@@ -2,7 +2,7 @@
 session_start();
 
 require_once __DIR__ . '/../../../app/middleware/auth.php';
-allowOnly(['teaching']);
+allowOnly(['non_teaching']);
 
 ?>
 

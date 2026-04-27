@@ -52,7 +52,7 @@
 
       <li class="nav-item">
         <a class="nav-link <?= $current === 'my-leaves.php' ? 'active' : '' ?>"
-           href="my-leaves.php">
+           href="/leaves/my-leaves">
           <i class="bi bi-calendar2-check"></i> My Leaves
         </a>
       </li>
